@@ -21,7 +21,7 @@
             </a>.
           </p>
           <p>
-            Find a bug? Have some Questions? Just want to talk about trees? Tell David!!!!! <a
+            Find a bug (Bugs are bad for trees)? Have some Questions? Just want to talk about trees? Tell David!!!!! <a
               href="mailto:david.seiferth@oriel.ox.ac.uk"
               target="_blank"
               rel="noopener noreferrer"

@@ -6,6 +6,14 @@
         alt="Vuetify.js"
         class="mb-5"
       >
+        <blockquote class="blockquote">
+        &#8220;Let's add some happy little trees &#8221;
+        <footer>
+          <small>
+            <em>&mdash;Bob Ross</em>
+          </small>
+        </footer>
+      </blockquote>
       <blockquote class="blockquote">
         &#8220;A society grows great when old men plant trees whose shade they know they shall never sit in. &#8221;
         <footer>
@@ -27,14 +35,6 @@
         <footer>
           <small>
             <em>&mdash;Emma Borsier</em>
-          </small>
-        </footer>
-      </blockquote>
-       <blockquote class="blockquote">
-        &#8220;Let's add some happy little trees &#8221;
-        <footer>
-          <small>
-            <em>&mdash;Bob Ross</em>
           </small>
         </footer>
       </blockquote>

@@ -1,3 +1,8 @@
+var user_angle = window.prompt("Please specify the angle!")
+var user_length = window.prompt("Please specify the length!")
+document.write("length = " + user_length + "\n angle = " +user_angle)
+
+
 class Point {
   constructor(xOrPoint, y) {
     if (xOrPoint.x !== undefined && xOrPoint.y !== undefined) {
@@ -46,8 +51,8 @@ function drawForward(drawingState, params) {
 
 const tree = {
   params: {
-    angle: 25,
-    length: 2,
+    angle: user_angle,//25,
+    length: user_length,//2,
   },
   axiom: 'X',
   rules: {

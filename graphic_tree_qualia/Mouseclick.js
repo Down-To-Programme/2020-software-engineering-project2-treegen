@@ -1,6 +1,9 @@
 var user_angle = window.prompt("Please specify the angle!")
 var user_length = window.prompt("Please specify the length!")
-document.write("length = " + user_length + "\n angle = " +user_angle)
+var user_N = window.prompt("Please specify the number of iterations!")
+var user_axiom = window.prompt('Specify the axiom with the follwoing characters: \n X F + [ ] \n default = X')
+document.write("length = " + user_length + "<br> angle = " +user_angle + "<br> #Iterations = "+user_N)
+document.write("<br>Axiom = "+user_axiom)
 
 
 class Point {
@@ -54,7 +57,7 @@ const tree = {
     angle: user_angle,//25,
     length: user_length,//2,
   },
-  axiom: 'X',
+  axiom: user_axiom, //'X',
   rules: {
     X: 'F[-X][X]F[-X]+FX',
     F: 'FF',
@@ -104,7 +107,7 @@ function setup() {
   noLoop();
 }
 
-numIters = 8;
+numIters = user_N,//8;
 system = tree;
 
 function mouseClicked() {

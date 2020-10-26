@@ -58,7 +58,7 @@
             nuxt
             to="/inspire"
           >
-            A quote about trees?
+            A forest full of quotes?
           </v-btn>
         </v-card-actions>
       </v-card>

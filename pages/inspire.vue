@@ -14,6 +14,30 @@
           </small>
         </footer>
       </blockquote>
+      <blockquote class="blockquote">
+        &#8220;Art is the tree of life. Science is the tree of death. &#8221;
+        <footer>
+          <small>
+            <em>&mdash;William Blake</em>
+          </small>
+        </footer>
+      </blockquote>
+      <blockquote class="blockquote">
+        &#8220;I only like wholesome quotes about trees &#8221;
+        <footer>
+          <small>
+            <em>&mdash;Emma Borsier</em>
+          </small>
+        </footer>
+      </blockquote>
+       <blockquote class="blockquote">
+        &#8220;Let's add some happy little trees &#8221;
+        <footer>
+          <small>
+            <em>&mdash;Bob Ross</em>
+          </small>
+        </footer>
+      </blockquote>
     </v-flex>
   </v-layout>
 </template>

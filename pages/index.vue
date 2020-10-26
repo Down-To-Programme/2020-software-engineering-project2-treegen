@@ -7,42 +7,32 @@
       </div>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          Welcome to EZ TREEZY
         </v-card-title>
         <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
+          <p>EZ TREEZY fulfills all your TREEZY needs in an EZ way.</p>
           <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
+            For more information on EZ TREEZY, check out the <a
+              href="https://github.com/Down-To-Programme/2020-software-engineering-project2-treegen"
               target="_blank"
               rel="noopener noreferrer"
             >
-              documentation
+              github
             </a>.
           </p>
           <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
+            Find a bug? Have some Questions? Just want to talk about trees? Tell David!!!!! <a
+              href="mailto:david.seiferth@oriel.ox.ac.uk"
               target="_blank"
               rel="noopener noreferrer"
               title="contribute"
             >
-              issue board
+              david.seiferth@oriel.ox.ac.uk
             </a>.
           </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
+          <p>Thanks for visiting EZ TREEZY, we look forward to seeing some sick trees.</p>
           <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+            <em><small>&mdash; Down-To-Programme</small></em>
           </div>
           <hr class="my-3">
           <a
@@ -68,7 +58,7 @@
             nuxt
             to="/inspire"
           >
-            Continue
+            A quote about trees?
           </v-btn>
         </v-card-actions>
       </v-card>

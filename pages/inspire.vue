@@ -7,10 +7,10 @@
         class="mb-5"
       >
       <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
+        &#8220;A society grows great when old men plant trees whose shade they know they shall never sit in. &#8221;
         <footer>
           <small>
-            <em>&mdash;John Johnson</em>
+            <em>&mdash;Probably some old Greek dude?</em>
           </small>
         </footer>
       </blockquote>

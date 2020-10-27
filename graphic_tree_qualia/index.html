@@ -7,7 +7,52 @@
 </head>
 <body>
     <ol id="log"></ol>
+
+    <h1>Modeling fractals with L-systems</h1>
+
+    <label for="iter">Number of iterations:</label><br>
+    <input type="text" id="iter" name="iter" value="6"><br>
+
+    <p><h3>Define the rules:</h3></p>
+
+    <form onsubmit=getRules()>
+        <label for="rules">   Choose initial state:</label>
+        <select name="Initial state" id="select_init">
+        <optgroup label="Initial state:">
+            <option value="ini_x">X</option>
+            <option value="ini_f">F</option>
+        </optgroup>    
+        </select>
+        <br>
+        <label for="x_rules">   Choose rule for X:</label>
+        <select name="Rule for X" id="x_rule">
+        <optgroup label="Replace X with:">
+            <option value="x_1">1. F[+X]F[-X]+X</option>
+            <option value="x_2">2. F[+X][-X]FX</option>
+            <option value="x_3">3. F-[[X]+X]+F[+FX]-X</option>
+            <option value="x_4">4. F-[[X]+X]+F[+FX]-X</option>
+        </optgroup>
+        </select>
+        <br>
+        <label for="f_rules">   Choose rule for F:</label>
+        <select name="Rule for F" id="f_rule">
+        <optgroup label="Replace F with:">
+            <option value="f_1">1. FF</option>
+            <option value="f_2">2. F[+F]F[-F]F</option>
+            <option value="f_3">3. F[+F]F[-F][F]</option>
+            <option value="f_4">4. FF-[-F+F+F]+[+F-F-F]</option>
+        </optgroup>
+        </select>
+        <br><br>
+        <input type="submit" value="Reset">
+    </form>
+
+   
+
     <script src="p5.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="Mouseclick.js"></script>
+
+    <p id="demo"></p>
+
 </body>
 </html>

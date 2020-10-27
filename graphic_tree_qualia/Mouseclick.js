@@ -10,6 +10,7 @@ class Point {
   }
 }
 
+
 class DrawingState {
   constructor(position, direction) {
     this.state = Object.create(null);
@@ -30,6 +31,43 @@ class DrawingState {
     return this.stack.length;
   }
 }
+function getIni() {
+  const ini_inputs = {
+    'ini_x': 'X',
+    'ini_f': 'F',    
+  };
+  var input = document.getElementById("select_init").value
+  var ini = ini_inputs[input];
+  return ini;
+}
+
+function getXrule() {
+  const x_inputs = {
+    'x_1': 'F[+X]F[-X]+X',
+    'x_2': 'F[+X][-X]FX',
+    'x_3': 'F-[[X]+X]+F[+FX]-X',
+    'x_4': 'F-[[X]+X]+F[+FX]-X',
+  }
+  var input = document.getElementById("x_rule").value
+  var x = x_inputs[input];
+  //document.getElementById("demo").innerHTML = x;
+  //console.log(x_inputs)
+  //console.log(x)
+
+  return x;
+}
+
+function getFrule() {
+  const f_inputs = {
+    'f_1': 'FF',
+    'f_2': 'F[+F]F[-F]F',
+    'f_3': 'F[+F]F[-F][F]',
+    'f_4': 'FF-[-F+F+F]+[+F-F-F]',
+  }
+  var input = document.getElementById("f_rule").value;
+  var f = f_inputs[input];
+  return f;
+}
 
 function drawForward(drawingState, params) {
   let {x, y} = drawingState.state.position;
@@ -44,51 +82,79 @@ function drawForward(drawingState, params) {
   drawingState.state.position.y = newY;
 };
 
-const tree = {
-  params: {
-    angle: 25,
-    length: 2,
-  },
-  axiom: 'X',
-  rules: {
-    X: 'F[-X][X]F[-X]+FX',
-    F: 'FF',
-  },
-  commands: {
-    'F': drawForward,
-    '-'(drawingState, params) {
-      drawingState.state.direction -= params.angle;
-    },
-    '+'(drawingState, params) {
-      drawingState.state.direction += params.angle;
-    },
-    '['(drawingState, params) {
-      drawingState.push();
-    },
-    ']'(drawingState, params) {
-      drawingState.pop();
-    },
-  }
-}
+
 
 function applyRule(rules, char) {
   return rules[char] || char;
 }
 
-function renderAGeneration (system, previousGeneration, drawingState, draw=true) {
+function *fragmentGenerator(system, string) {
+  for (const char of string) {
+    yield applyRule(system.rules, char);
+  }
+}
+
+function renderAGeneration (system, previousGeneration) {
   let nextGeneration = '';
   for (const character of previousGeneration) {
     const nextCharacters = applyRule(system.rules, character);
     nextGeneration += nextCharacters;
-    if (draw) {
-      for (const character of nextCharacters) {
-        if (system.commands[character]) {
-        	system.commands[character](drawingState, system.params);
-      	}
-      }
-    }
   }
   return nextGeneration;
+}
+
+function drawSystem(system, fragmentIterator, drawingState) {
+  const drawFrame = () => {
+    const iter = fragmentIterator.next();
+    if (iter.done) {
+      return;
+    }
+    const fragment = iter.value;
+    for (const character of fragment) {
+      const drawingFunction = system.commands[character];
+      if (drawingFunction) {
+        drawingFunction(drawingState, system.params);
+      }
+    }
+    requestAnimationFrame(drawFrame);
+  };
+  requestAnimationFrame(drawFrame);
+}
+
+function getRules() {
+
+  let tree = {
+    params: {
+      angle: 25,
+      length: 2,
+    },
+    axiom: getIni(),
+    rules: {
+      X: getXrule(),
+      F: getFrule(),
+    },
+    commands: {
+      'F': drawForward,
+      '-'(drawingState, params) {
+        drawingState.state.direction -= params.angle;
+      },
+      '+'(drawingState, params) {
+        drawingState.state.direction += params.angle;
+      },
+      '['(drawingState, params) {
+        drawingState.push();
+      },
+      ']'(drawingState, params) {
+        drawingState.pop();
+      },
+    }
+  }
+  return tree;
+}
+
+function getNumIters() {
+  var numIters = document.getElementById("iter").value;
+  return numIters;
 }
 
 const CANVAS_BOUNDS = new Point(1000, 1000);
@@ -99,17 +165,23 @@ function setup() {
   noLoop();
 }
 
-numIters = 8;
-system = tree;
+//numIters = 6;
+//system = tree;
 
-function mouseClicked() {
+async function mouseClicked() {
+  system = getRules();
+  numIters = getNumIters();
   const origin = new Point(mouseX, mouseY);
   let systemState = system.axiom;
   console.log(systemState);
   for (let i = 1; i < numIters; i++) {
     const drawingState = new DrawingState(origin, -90);
     const shouldDraw = i === numIters - 1;
-    systemState = renderAGeneration(system, systemState, drawingState, shouldDraw);
-    console.log(systemState); 
+    systemState = renderAGeneration(system, systemState, drawingState, false);
+    console.log(systemState);
   }
+  const drawingState = new DrawingState(origin, -90);
+  const fragmentIterator = fragmentGenerator(system, systemState);
+  drawSystem(system, fragmentIterator, drawingState);
 }
+
